@@ -97,7 +97,9 @@
             animation-fill-mode: both;
             position: relative;
             width: 100%;
-            min-height: 400px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
         }
 
         .project-card:hover {
@@ -198,7 +200,8 @@
                 inset -2px -2px 0px rgba(0, 0, 0, 0.5),
                 4px 4px 0px rgba(0, 0, 0, 0.5);
             font-weight: bold;
-            margin-bottom: 20px;
+            width: fit-content;
+            margin-top: 16px;
         }
 
         .project-link:hover {
@@ -326,14 +329,22 @@
             z-index: 1000;
         }
 
+        .project-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .project-preview {
-            width: 100%;
-            height: 200px;
+            width: 120px;
+            height: 80px;
             border: 2px solid #333333;
             background: #000000;
-            margin-top: 20px;
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
+            align-self: flex-start;
         }
 
         .project-screenshot {
@@ -362,6 +373,13 @@
             
             .project-card {
                 padding: 24px;
+                flex-direction: column;
+            }
+            
+            .project-preview {
+                width: 100%;
+                height: 150px;
+                margin-top: 16px;
             }
             
             .project-title {
@@ -394,60 +412,72 @@
 
         <div class="projects-grid">
             <div class="project-card card-fire">
-                <h3 class="project-title">FIREBALL</h3>
-                <p class="project-builder">BUILT BY YANIK, CLASSICJ</p>
-                <p class="project-description">A strategic autobattler metagame that brings competitive gameplay to the Gigaverse ecosystem with automated battles and deep strategic elements.</p>
-                <a href="https://fireball.gg/" class="project-link" target="_blank">VISIT FIREBALL</a>
+                <div class="project-content">
+                    <h3 class="project-title">FIREBALL</h3>
+                    <p class="project-builder">BUILT BY YANIK, CLASSICJ</p>
+                    <p class="project-description">A strategic autobattler metagame that brings competitive gameplay to the Gigaverse ecosystem with automated battles and deep strategic elements.</p>
+                    <a href="https://fireball.gg/" class="project-link" target="_blank">VISIT FIREBALL</a>
+                </div>
                 <div class="project-preview">
-                    <img src="https://postimg.cc/3kVNgGyq" class="project-screenshot" alt="Fireball website preview" />
+                    <img src="https://i.imgur.com/VPwvnYL.jpeg" class="project-screenshot" alt="Fireball website preview" />
                 </div>
             </div>
 
             <div class="project-card card-ai">
-                <h3 class="project-title">AI SMOL</h3>
-                <p class="project-builder">BUILT BY TREASUREDAO</p>
-                <p class="project-description">An intelligent autobattler experience powered by AI, offering automated strategic gameplay within the Gigaverse universe.</p>
-                <a href="https://marketplace.treasure.lol/" class="project-link" target="_blank">VISIT AI SMOL</a>
+                <div class="project-content">
+                    <h3 class="project-title">AI SMOL</h3>
+                    <p class="project-builder">BUILT BY TREASUREDAO</p>
+                    <p class="project-description">An intelligent autobattler experience powered by AI, offering automated strategic gameplay within the Gigaverse universe.</p>
+                    <a href="https://marketplace.treasure.lol/" class="project-link" target="_blank">VISIT AI SMOL</a>
+                </div>
                 <div class="project-preview">
                     <img src="ai-smol-screenshot.png" class="project-screenshot" alt="AI Smol website preview" />
                 </div>
             </div>
 
             <div class="project-card card-tera">
-                <h3 class="project-title">TERAVERSE</h3>
-                <p class="project-builder">BUILT BY SLK</p>
-                <p class="project-description">Accelerate your Gigaverse experience with algorithm-driven gameplay automation, allowing you to play faster and more efficiently.</p>
-                <a href="https://teraverse.abstools.xyz/" class="project-link" target="_blank">VISIT TERAVERSE</a>
+                <div class="project-content">
+                    <h3 class="project-title">TERAVERSE</h3>
+                    <p class="project-builder">BUILT BY SLK</p>
+                    <p class="project-description">Accelerate your Gigaverse experience with algorithm-driven gameplay automation, allowing you to play faster and more efficiently.</p>
+                    <a href="https://teraverse.abstools.xyz/" class="project-link" target="_blank">VISIT TERAVERSE</a>
+                </div>
                 <div class="project-preview">
                     <img src="teraverse-screenshot.png" class="project-screenshot" alt="Teraverse website preview" />
                 </div>
             </div>
 
             <div class="project-card card-live">
-                <h3 class="project-title">GIGAVERSE LIVE</h3>
-                <p class="project-builder">BUILT BY TACO</p>
-                <p class="project-description">Comprehensive ROM, stubs and items listing platform providing live data and analytics for the Gigaverse ecosystem.</p>
-                <a href="https://www.gigaverse.live/rom_listings" class="project-link" target="_blank">VISIT GIGAVERSE LIVE</a>
+                <div class="project-content">
+                    <h3 class="project-title">GIGAVERSE LIVE</h3>
+                    <p class="project-builder">BUILT BY TACO</p>
+                    <p class="project-description">Comprehensive ROM, stubs and items listing platform providing live data and analytics for the Gigaverse ecosystem.</p>
+                    <a href="https://www.gigaverse.live/rom_listings" class="project-link" target="_blank">VISIT GIGAVERSE LIVE</a>
+                </div>
                 <div class="project-preview">
                     <img src="gigaverse-live-screenshot.png" class="project-screenshot" alt="Gigaverse Live website preview" />
                 </div>
             </div>
 
             <div class="project-card card-market">
-                <h3 class="project-title">GIGAVERSE MARKET</h3>
-                <p class="project-builder">BUILT BY CHRIS</p>
-                <p class="project-description">A powerful market indexer that tracks and analyzes marketplace data, providing insights into Gigaverse trading patterns and trends.</p>
-                <a href="https://gigaversemarket.vercel.app/" class="project-link" target="_blank">VISIT GIGAVERSE MARKET</a>
+                <div class="project-content">
+                    <h3 class="project-title">GIGAVERSE MARKET</h3>
+                    <p class="project-builder">BUILT BY CHRIS</p>
+                    <p class="project-description">A powerful market indexer that tracks and analyzes marketplace data, providing insights into Gigaverse trading patterns and trends.</p>
+                    <a href="https://gigaversemarket.vercel.app/" class="project-link" target="_blank">VISIT GIGAVERSE MARKET</a>
+                </div>
                 <div class="project-preview">
                     <img src="gigaverse-market-screenshot.png" class="project-screenshot" alt="Gigaverse Market website preview" />
                 </div>
             </div>
 
             <div class="project-card card-wiki">
-                <h3 class="project-title">GIGAWIKI</h3>
-                <p class="project-builder">BUILT BY MOMO</p>
-                <p class="project-description">A comprehensive wiki resource providing detailed information, guides, and documentation for the Gigaverse community and ecosystem.</p>
-                <a href="https://gigaverse.wiki/wiki/Main_Page" class="project-link" target="_blank">VISIT GIGAWIKI</a>
+                <div class="project-content">
+                    <h3 class="project-title">GIGAWIKI</h3>
+                    <p class="project-builder">BUILT BY MOMO</p>
+                    <p class="project-description">A comprehensive wiki resource providing detailed information, guides, and documentation for the Gigaverse community and ecosystem.</p>
+                    <a href="https://gigaverse.wiki/wiki/Main_Page" class="project-link" target="_blank">VISIT GIGAWIKI</a>
+                </div>
                 <div class="project-preview">
                     <img src="gigawiki-screenshot.png" class="project-screenshot" alt="Gigawiki website preview" />
                 </div>
