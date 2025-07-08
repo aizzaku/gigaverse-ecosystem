@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigaverse Community Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'm5x7';
+            src: url('https://fonts.cdnfonts.com/css/m5x7') format('truetype');
+            font-display: swap;
+        }
+        
+        /* Fallback for m5x7 - using a more pixel-accurate font */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        body {
+            font-family: 'm5x7', 'VT323', monospace;
+            background: 
+                linear-gradient(0deg, #000000 0%, #0a0a0a 25%, #111111 50%, #0a0a0a 75%, #000000 100%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.01) 2px,
+                    rgba(255, 255, 255, 0.01) 4px
+                );
+            min-height: 100vh;
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 32px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 64px;
+            animation: pixelFadeIn 1.2s ease-out;
+        }
+
+        .header h1 {
+            font-size: 64px;
+            font-weight: normal;
+            color: #FDC633;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 28px;
+            color: #cccccc;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+            width: 100%;
+        }
+
+        .project-card {
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.05) 0%, 
+                    rgba(255, 255, 255, 0.02) 100%),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255, 255, 255, 0.01) 1px,
+                    rgba(255, 255, 255, 0.01) 2px
+                );
+            border: 2px solid #333333;
+            border-radius: 0px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            animation: pixelFadeIn 1.2s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: #555555;
+        }
+
+        /* Different card colors */
+        .card-fire {
+            border-color: #ff4444;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 68, 68, 0.1) 0%, 
+                    rgba(255, 68, 68, 0.05) 100%);
+        }
+
+        .card-ai {
+            border-color: #4488ff;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(68, 136, 255, 0.1) 0%, 
+                    rgba(68, 136, 255, 0.05) 100%);
+        }
+
+        .card-tera {
+            border-color: #aa44ff;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(170, 68, 255, 0.1) 0%, 
+                    rgba(170, 68, 255, 0.05) 100%);
+        }
+
+        .card-live {
+            border-color: #44ff44;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(68, 255, 68, 0.1) 0%, 
+                    rgba(68, 255, 68, 0.05) 100%);
+        }
+
+        .card-market {
+            border-color: #ffaa44;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 170, 68, 0.1) 0%, 
+                    rgba(255, 170, 68, 0.05) 100%);
+        }
+
+        .card-wiki {
+            border-color: #ff44aa;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 68, 170, 0.1) 0%, 
+                    rgba(255, 68, 170, 0.05) 100%);
+        }
+
+        .project-title {
+            font-size: 32px;
+            font-weight: normal;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 0px #000000;
+        }
+
+        .project-builder {
+            font-size: 16px;
+            color: #888888;
+            font-weight: normal;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .project-description {
+            color: #cccccc;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            font-size: 18px;
+            letter-spacing: 0.25px;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #000000;
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 16px;
+            padding: 16px 24px;
+            background: #555555;
+            border: 3px solid;
+            transition: all 0.2s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 
+                inset 2px 2px 0px rgba(255, 255, 255, 0.1),
+                inset -2px -2px 0px rgba(0, 0, 0, 0.5),
+                4px 4px 0px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .project-link:hover {
+            transform: translate(-2px, -2px);
+            background: #666666;
+            box-shadow: 
+                inset 2px 2px 0px rgba(255, 255, 255, 0.2),
+                inset -2px -2px 0px rgba(0, 0, 0, 0.6),
+                6px 6px 0px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-link::after {
+            content: ' >';
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .project-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Pixel art specific colors for cards */
+        .card-fire .project-title { color: #ff6666; }
+        .card-ai .project-title { color: #66aaff; }
+        .card-tera .project-title { color: #aa66ff; }
+        .card-live .project-title { color: #66ff66; }
+        .card-market .project-title { color: #ffaa66; }
+        .card-wiki .project-title { color: #ff66aa; }
+
+        .card-fire .project-link { 
+            background: transparent; 
+            border-color: #ff4444; 
+            color: #ff4444;
+        }
+        .card-fire .project-link:hover { 
+            background: rgba(255, 68, 68, 0.1); 
+        }
+        
+        .card-ai .project-link { 
+            background: transparent; 
+            border-color: #4488ff; 
+            color: #4488ff;
+        }
+        .card-ai .project-link:hover { 
+            background: rgba(68, 136, 255, 0.1); 
+        }
+        
+        .card-tera .project-link { 
+            background: transparent; 
+            border-color: #aa44ff; 
+            color: #aa44ff;
+        }
+        .card-tera .project-link:hover { 
+            background: rgba(170, 68, 255, 0.1); 
+        }
+        
+        .card-live .project-link { 
+            background: transparent; 
+            border-color: #44ff44; 
+            color: #44ff44;
+        }
+        .card-live .project-link:hover { 
+            background: rgba(68, 255, 68, 0.1); 
+        }
+        
+        .card-market .project-link { 
+            background: transparent; 
+            border-color: #ffaa44; 
+            color: #ffaa44;
+        }
+        .card-market .project-link:hover { 
+            background: rgba(255, 170, 68, 0.1); 
+        }
+        
+        .card-wiki .project-link { 
+            background: transparent; 
+            border-color: #ff44aa; 
+            color: #ff44aa;
+        }
+        .card-wiki .project-link:hover { 
+            background: rgba(255, 68, 170, 0.1); 
+        }
+
+        @keyframes pixelFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Pixel grid overlay */
+        .pixel-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255, 255, 255, 0.01) 1px,
+                    rgba(255, 255, 255, 0.01) 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255, 255, 255, 0.01) 1px,
+                    rgba(255, 255, 255, 0.01) 2px
+                );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .project-preview {
+            width: 100%;
+            height: 200px;
+            border: 2px solid #333333;
+            background: #000000;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .header h1 {
+                font-size: 36px;
+            }
+            
+            .header p {
+                font-size: 16px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .project-card {
+                padding: 24px;
+            }
+            
+            .project-title {
+                font-size: 24px;
+            }
+            
+            .project-builder {
+                font-size: 14px;
+            }
+            
+            .project-description {
+                font-size: 14px;
+            }
+            
+            .project-link {
+                font-size: 14px;
+                padding: 14px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pixel-grid"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>GIGAVERSE COMMUNITY ECOSYSTEM</h1>
+            <p>INNOVATIVE TOOLS AND GAMES BUILT FOR THE GIGAVERSE</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card card-fire">
+                <h3 class="project-title">FIREBALL</h3>
+                <p class="project-builder">BUILT BY YANIK, CLASSICJ</p>
+                <p class="project-description">A strategic autobattler metagame that brings competitive gameplay to the Gigaverse ecosystem with automated battles and deep strategic elements.</p>
+                <a href="https://fireball.gg/" class="project-link" target="_blank">VISIT FIREBALL</a>
+                <div class="project-preview">
+                    <img src="https://postimg.cc/3kVNgGyq" class="project-screenshot" alt="Fireball website preview" />
+                </div>
+            </div>
+
+            <div class="project-card card-ai">
+                <h3 class="project-title">AI SMOL</h3>
+                <p class="project-builder">BUILT BY TREASUREDAO</p>
+                <p class="project-description">An intelligent autobattler experience powered by AI, offering automated strategic gameplay within the Gigaverse universe.</p>
+                <a href="https://marketplace.treasure.lol/" class="project-link" target="_blank">VISIT AI SMOL</a>
+                <div class="project-preview">
+                    <img src="ai-smol-screenshot.png" class="project-screenshot" alt="AI Smol website preview" />
+                </div>
+            </div>
+
+            <div class="project-card card-tera">
+                <h3 class="project-title">TERAVERSE</h3>
+                <p class="project-builder">BUILT BY SLK</p>
+                <p class="project-description">Accelerate your Gigaverse experience with algorithm-driven gameplay automation, allowing you to play faster and more efficiently.</p>
+                <a href="https://teraverse.abstools.xyz/" class="project-link" target="_blank">VISIT TERAVERSE</a>
+                <div class="project-preview">
+                    <img src="teraverse-screenshot.png" class="project-screenshot" alt="Teraverse website preview" />
+                </div>
+            </div>
+
+            <div class="project-card card-live">
+                <h3 class="project-title">GIGAVERSE LIVE</h3>
+                <p class="project-builder">BUILT BY TACO</p>
+                <p class="project-description">Comprehensive ROM, stubs and items listing platform providing live data and analytics for the Gigaverse ecosystem.</p>
+                <a href="https://www.gigaverse.live/rom_listings" class="project-link" target="_blank">VISIT GIGAVERSE LIVE</a>
+                <div class="project-preview">
+                    <img src="gigaverse-live-screenshot.png" class="project-screenshot" alt="Gigaverse Live website preview" />
+                </div>
+            </div>
+
+            <div class="project-card card-market">
+                <h3 class="project-title">GIGAVERSE MARKET</h3>
+                <p class="project-builder">BUILT BY CHRIS</p>
+                <p class="project-description">A powerful market indexer that tracks and analyzes marketplace data, providing insights into Gigaverse trading patterns and trends.</p>
+                <a href="https://gigaversemarket.vercel.app/" class="project-link" target="_blank">VISIT GIGAVERSE MARKET</a>
+                <div class="project-preview">
+                    <img src="gigaverse-market-screenshot.png" class="project-screenshot" alt="Gigaverse Market website preview" />
+                </div>
+            </div>
+
+            <div class="project-card card-wiki">
+                <h3 class="project-title">GIGAWIKI</h3>
+                <p class="project-builder">BUILT BY MOMO</p>
+                <p class="project-description">A comprehensive wiki resource providing detailed information, guides, and documentation for the Gigaverse community and ecosystem.</p>
+                <a href="https://gigaverse.wiki/wiki/Main_Page" class="project-link" target="_blank">VISIT GIGAWIKI</a>
+                <div class="project-preview">
+                    <img src="gigawiki-screenshot.png" class="project-screenshot" alt="Gigawiki website preview" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
